@@ -212,6 +212,26 @@ struct ItemViewModel {
         subtitle = item.holder
     }
     
+    init(_ item: Transfer, longDateStyle: Bool) {
+        let numberFormatter = Formatters.number
+        numberFormatter.numberStyle = .currency
+        numberFormatter.currencyCode = item.currencyCode
+        
+        let amount = numberFormatter.string(from: item.amount as NSNumber)!
+        title = "\(amount) • \(item.description)"
+        
+        let dateFormatter = Formatters.date
+        if longDateStyle {
+            dateFormatter.dateStyle = .long
+            dateFormatter.timeStyle = .short
+            subtitle = "Sent to: \(item.recipient) on \(dateFormatter.string(from: item.date))"
+        } else {
+            dateFormatter.dateStyle = .short
+            dateFormatter.timeStyle = .short
+            subtitle = "Received from: \(item.sender) on \(dateFormatter.string(from: item.date))"
+        }
+    }
+    
 }
 
 extension UITableViewCell {
