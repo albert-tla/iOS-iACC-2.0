@@ -180,6 +180,24 @@ class ListViewController: UITableViewController {
 			fatalError("unknown item: \(item)")
 		}
 	}
+    
+    func select(friend: Friend) {
+        let vc = FriendDetailsViewController()
+        vc.friend = friend
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func select(card: Card) {
+        let vc = CardDetailsViewController()
+        vc.card = card
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func select(transfer: Transfer) {
+        let vc = TransferDetailsViewController()
+        vc.transfer = transfer
+        navigationController?.pushViewController(vc, animated: true)
+    }
 	
 	@objc func addCard() {
 		navigationController?.pushViewController(AddCardViewController(), animated: true)
