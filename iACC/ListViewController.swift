@@ -202,6 +202,11 @@ struct ItemViewModel {
     let title: String
     let subtitle: String
     
+    init(_ item: Friend) {
+        title = item.name
+        subtitle = item.phone
+    }
+    
 }
 
 extension UITableViewCell {
