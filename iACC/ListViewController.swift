@@ -157,7 +157,8 @@ class ListViewController: UITableViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let item = items[indexPath.row]
 		let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell") ?? UITableViewCell(style: .subtitle, reuseIdentifier: "ItemCell")
-		cell.configure(item, longDateStyle: longDateStyle)
+        let vm = ItemViewModel(item, longDateStyle: longDateStyle)
+		cell.configure(vm)
 		return cell
 	}
 	
@@ -252,9 +253,8 @@ extension ItemViewModel {
 }
 
 extension UITableViewCell {
-	func configure(_ item: Any, longDateStyle: Bool) {
-        let vm = ItemViewModel(item, longDateStyle: longDateStyle)
+    func configure(_ vm: ItemViewModel) {
         textLabel?.text = vm.title
-        detailTextLabel?.text = vm.subtitle 
+        detailTextLabel?.text = vm.subtitle
 	}
 }
