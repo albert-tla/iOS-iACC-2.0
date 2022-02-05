@@ -197,6 +197,13 @@ class ListViewController: UITableViewController {
 	}
 }
 
+struct ItemViewModel {
+    
+    let title: String
+    let subtitle: String
+    
+}
+
 extension UITableViewCell {
 	func configure(_ item: Any, longDateStyle: Bool) {
 		if let friend = item as? Friend {
