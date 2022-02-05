@@ -200,6 +200,18 @@ class ListViewController: UITableViewController {
 struct ItemViewModel {
     let title: String
     let subtitle: String
+    
+    init(_ item: Any, longDateStyle: Bool) {
+        if let friend = item as? Friend {
+            self.init(friend)
+        } else if let card = item as? Card {
+            self.init(card)
+        } else if let transfer = item as? Transfer {
+            self.init(transfer, longDateStyle: longDateStyle)
+        } else {
+            fatalError("unknown item: \(item)")
+        }
+    }
 }
 
 extension ItemViewModel {
