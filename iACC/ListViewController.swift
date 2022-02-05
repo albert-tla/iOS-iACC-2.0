@@ -178,19 +178,19 @@ class ListViewController: UITableViewController {
     func select(friend: Friend) {
         let vc = FriendDetailsViewController()
         vc.friend = friend
-        navigationController?.pushViewController(vc, animated: true)
+        show(vc, sender: self)
     }
     
     func select(card: Card) {
         let vc = CardDetailsViewController()
         vc.card = card
-        navigationController?.pushViewController(vc, animated: true)
+        show(vc, sender: self)
     }
     
     func select(transfer: Transfer) {
         let vc = TransferDetailsViewController()
         vc.transfer = transfer
-        navigationController?.pushViewController(vc, animated: true)
+        show(vc, sender: self)
     }
 	
 	@objc func addCard() {
