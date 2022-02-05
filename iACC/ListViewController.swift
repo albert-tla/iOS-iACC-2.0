@@ -202,33 +202,33 @@ struct ItemViewModel {
     let title: String
     let subtitle: String
     
-    init(_ item: Friend) {
-        title = item.name
-        subtitle = item.phone
+    init(_ friend: Friend) {
+        title = friend.name
+        subtitle = friend.phone
     }
     
-    init(_ item: Card) {
-        title = item.number
-        subtitle = item.holder
+    init(_ card: Card) {
+        title = card.number
+        subtitle = card.holder
     }
     
-    init(_ item: Transfer, longDateStyle: Bool) {
+    init(_ transfer: Transfer, longDateStyle: Bool) {
         let numberFormatter = Formatters.number
         numberFormatter.numberStyle = .currency
-        numberFormatter.currencyCode = item.currencyCode
+        numberFormatter.currencyCode = transfer.currencyCode
         
-        let amount = numberFormatter.string(from: item.amount as NSNumber)!
-        title = "\(amount) • \(item.description)"
+        let amount = numberFormatter.string(from: transfer.amount as NSNumber)!
+        title = "\(amount) • \(transfer.description)"
         
         let dateFormatter = Formatters.date
         if longDateStyle {
             dateFormatter.dateStyle = .long
             dateFormatter.timeStyle = .short
-            subtitle = "Sent to: \(item.recipient) on \(dateFormatter.string(from: item.date))"
+            subtitle = "Sent to: \(transfer.recipient) on \(dateFormatter.string(from: transfer.date))"
         } else {
             dateFormatter.dateStyle = .short
             dateFormatter.timeStyle = .short
-            subtitle = "Received from: \(item.sender) on \(dateFormatter.string(from: item.date))"
+            subtitle = "Received from: \(transfer.sender) on \(dateFormatter.string(from: transfer.date))"
         }
     }
     
