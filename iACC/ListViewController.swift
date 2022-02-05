@@ -198,21 +198,27 @@ class ListViewController: UITableViewController {
 }
 
 struct ItemViewModel {
-    
     let title: String
     let subtitle: String
-    
+}
+
+extension ItemViewModel {
     init(_ friend: Friend) {
         title = friend.name
         subtitle = friend.phone
     }
-    
+}
+
+extension ItemViewModel {
     init(_ card: Card) {
         title = card.number
         subtitle = card.holder
     }
+}
+extension ItemViewModel {
     
     init(_ transfer: Transfer, longDateStyle: Bool) {
+        
         let numberFormatter = Formatters.number
         numberFormatter.numberStyle = .currency
         numberFormatter.currencyCode = transfer.currencyCode
@@ -231,7 +237,6 @@ struct ItemViewModel {
             subtitle = "Received from: \(transfer.sender) on \(dateFormatter.string(from: transfer.date))"
         }
     }
-    
 }
 
 extension UITableViewCell {
