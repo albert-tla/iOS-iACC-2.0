@@ -207,6 +207,11 @@ struct ItemViewModel {
         subtitle = item.phone
     }
     
+    init(_ item: Card) {
+        title = item.number
+        subtitle = item.holder
+    }
+    
 }
 
 extension UITableViewCell {
