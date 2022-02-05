@@ -130,21 +130,23 @@ class ListViewController: UITableViewController {
 							self?.tableView.reloadData()
 							
 						case let .failure(error):
-							let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-							alert.addAction(UIAlertAction(title: "Ok", style: .default))
-                            self?.showDetailViewController(alert, sender: self)
+                            self?.show(error: error)
 						}
 						self?.refreshControl?.endRefreshing()
 					}
 				}
 			} else {
-				let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-				alert.addAction(UIAlertAction(title: "Ok", style: .default))
-                self.showDetailViewController(alert, sender: self)
+                self.show(error: error)
 				self.refreshControl?.endRefreshing()
 			}
 		}
 	}
+    
+    func show(error: Error) {
+        let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        showDetailViewController(alert, sender: self)
+    }
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		1
